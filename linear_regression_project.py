@@ -2,27 +2,24 @@
 # coding: utf-8
 
 # 欢迎来到线性回归项目。
-# 
+#
 # 若项目中的题目有困难没完成也没关系，我们鼓励您带着问题提交项目，评审会给予您诸多帮助。
-# 
+#
 # 其中证明题可以提交 pdf 格式，手写后扫描或使用公式编辑器（latex，mathtype）均可行。
 
 # # 1 矩阵运算
-# 
+#
 # ## 1.1 创建一个 4*4 的单位矩阵
 
 # In[96]:
 
 
-# 这个项目设计来帮你熟悉 python list 和线性代数
-# 你不能调用任何python库，包括NumPy，来完成作业
-
-A = [[1,2,3], 
-     [2,3,3], 
+A = [[1,2,3],
+     [2,3,3],
      [1,2,5]]
 
-B = [[1,2,3,5], 
-     [2,3,3,5], 
+B = [[1,2,3,5],
+     [2,3,3,5],
      [1,2,5,1]]
 
 #TODO 创建一个 4*4 单位矩阵
@@ -117,11 +114,11 @@ get_ipython().magic(u'run -i -e test.py LinearRegressionTestCase.test_matxMultip
 
 
 # ---
-# 
+#
 # # 2 Gaussign Jordan 消元法
-# 
+#
 # ## 2.1 构造增广矩阵
-# 
+#
 # $ A = \begin{bmatrix}
 #     a_{11}    & a_{12} & ... & a_{1n}\\
 #     a_{21}    & a_{22} & ... & a_{2n}\\
@@ -135,7 +132,7 @@ get_ipython().magic(u'run -i -e test.py LinearRegressionTestCase.test_matxMultip
 #     ...    \\
 #     b_{n}  \\
 # \end{bmatrix}$
-# 
+#
 # 返回 $ Ab = \begin{bmatrix}
 #     a_{11}    & a_{12} & ... & a_{1n} & b_{1}\\
 #     a_{21}    & a_{22} & ... & a_{2n} & b_{2}\\
@@ -218,25 +215,25 @@ get_ipython().magic(u'run -i -e test.py LinearRegressionTestCase.test_addScaledR
 # ## 2.3  Gaussian Jordan 消元法求解 Ax = b
 
 # ### 提示：
-# 
+#
 # 步骤1 检查A，b是否行数相同
-# 
+#
 # 步骤2 构造增广矩阵Ab
-# 
+#
 # 步骤3 逐列转换Ab为化简行阶梯形矩阵 [中文维基链接](https://zh.wikipedia.org/wiki/%E9%98%B6%E6%A2%AF%E5%BD%A2%E7%9F%A9%E9%98%B5#.E5.8C.96.E7.AE.80.E5.90.8E.E7.9A.84-.7Bzh-hans:.E8.A1.8C.3B_zh-hant:.E5.88.97.3B.7D-.E9.98.B6.E6.A2.AF.E5.BD.A2.E7.9F.A9.E9.98.B5)
-#     
+#
 #     对于Ab的每一列（最后一列除外）
 #         当前列为列c
 #         寻找列c中 对角线以及对角线以下所有元素（行 c~N）的绝对值的最大值
 #         如果绝对值最大值为0
 #             那么A为奇异矩阵，返回None （请在问题2.4中证明该命题）
 #         否则
-#             使用第一个行变换，将绝对值最大值所在行交换到对角线元素所在行（行c） 
+#             使用第一个行变换，将绝对值最大值所在行交换到对角线元素所在行（行c）
 #             使用第二个行变换，将列c的对角线元素缩放为1
 #             多次使用第三个行变换，将列c的其他元素消为0
-#             
+#
 # 步骤4 返回Ab的最后一列
-# 
+#
 # ### 注：
 # 我们并没有按照常规方法先把矩阵转化为行阶梯形矩阵，再转换为化简行阶梯形矩阵，而是一步到位。如果你熟悉常规方法的话，可以思考一下两者的等价性。
 
@@ -247,12 +244,12 @@ get_ipython().magic(u'run -i -e test.py LinearRegressionTestCase.test_addScaledR
 
 """ Gaussian Jordan 方法求解 Ax = b.
     参数
-        A: 方阵 
+        A: 方阵
         b: 列向量
         decPts: 四舍五入位数，默认为4
         epsilon: 判读是否为0的阈值，默认 1.0e-16
-        
-    返回列向量 x 使得 Ax = b 
+
+    返回列向量 x 使得 Ax = b
     返回None，如果 A，b 高度不同
     返回None，如果 A 为奇异矩阵
 """
@@ -304,16 +301,16 @@ get_ipython().magic(u'run -i -e test.py LinearRegressionTestCase.test_gj_Solve')
 
 
 # ## 2.4 证明下面的命题：
-# 
-# **如果方阵 A 可以被分为4个部分: ** 
-# 
+#
+# **如果方阵 A 可以被分为4个部分: **
+#
 # $ A = \begin{bmatrix}
 #     I    & X \\
 #     Z    & Y \\
 # \end{bmatrix} , \text{其中 I 为单位矩阵，Z 为全0矩阵，Y 的第一列全0}$，
-# 
+#
 # **那么A为奇异矩阵。**
-# 
+#
 # 提示：从多种角度都可以完成证明
 # - 考虑矩阵 Y 和 矩阵 A 的秩
 # - 考虑矩阵 Y 和 矩阵 A 的行列式
@@ -328,11 +325,11 @@ get_ipython().run_cell_magic(u'latex', u'', u'$$\\text{1\uff1a\u8bbe\u65b9\u9635
 
 
 # ---
-# 
-# # 3 线性回归: 
-# 
+#
+# # 3 线性回归:
+#
 # ## 3.1 计算损失函数相对于参数的导数 (两个3.1 选做其一)
-# 
+#
 # 我们定义损失函数 $E$ ：
 # $$
 # E = \sum_{i=1}^{n}{(y_i - mx_i - b)^2}
@@ -357,20 +354,20 @@ get_ipython().run_cell_magic(u'latex', u'', u'$$\\text{1\uff1a\u8bbe\u65b9\u9635
 #     b \\
 # \end{bmatrix}
 # $$
-# 
+#
 # 证明：
 # $$
 # \frac{\partial E}{\partial m} = \sum_{i=1}^{n}{-2x_i(y_i - mx_i - b)}
 # $$
-# 
+#
 # $$
 # \frac{\partial E}{\partial b} = \sum_{i=1}^{n}{-2(y_i - mx_i - b)}
 # $$
-# 
+#
 # $$
 # \begin{bmatrix}
 #     \frac{\partial E}{\partial m} \\
-#     \frac{\partial E}{\partial b} 
+#     \frac{\partial E}{\partial b}
 # \end{bmatrix} = 2X^TXh - 2X^TY
 # $$
 
@@ -383,7 +380,7 @@ get_ipython().run_cell_magic(u'latex', u'', u'\n$$\\\\$$\n\n$$\n\\text{\u53d8\u6
 
 
 # ## 3.1 计算损失函数相对于参数的导数（两个3.1 选做其一）
-# 
+#
 # 我们定义损失函数 $E$ ：
 # $$
 # E = \sum_{i=1}^{n}{(y_i - mx_i - b)^2}
@@ -408,27 +405,27 @@ get_ipython().run_cell_magic(u'latex', u'', u'\n$$\\\\$$\n\n$$\n\\text{\u53d8\u6
 #     b \\
 # \end{bmatrix}
 # $$
-# 
+#
 # 证明：
-# 
+#
 # $$
 # E = Y^TY -2(Xh)^TY + (Xh)^TXh
-# $$ 
-# 
+# $$
+#
 # $$
 # \begin{bmatrix}
 #     \frac{\partial E}{\partial m} \\
-#     \frac{\partial E}{\partial b} 
+#     \frac{\partial E}{\partial b}
 # \end{bmatrix}  = \frac{\partial E}{\partial h} = 2X^TXh - 2X^TY
 # $$
 
 # TODO 请使用 latex （请参照题目的 latex 写法学习）
-# 
+#
 # TODO 证明：
 
 # ## 3.2  线性回归
-# 
-# ### 求解方程 $X^TXh = X^TY $, 计算线性回归的最佳参数 h 
+#
+# ### 求解方程 $X^TXh = X^TY $, 计算线性回归的最佳参数 h
 # *如果你想更深入地了解Normal Equation是如何做线性回归的，可以看看MIT的线性代数公开课，相关内容在[投影矩阵与最小二乘](http://open.163.com/movie/2010/11/P/U/M6V0BQC4M_M6V2AOJPU.html)。*
 
 # In[117]:
@@ -443,15 +440,15 @@ get_ipython().run_cell_magic(u'latex', u'', u'\n$$\\\\$$\n\n$$\n\\text{\u53d8\u6
 def linearRegression(points):
     # 构建 Ax = b 的线性方程
     X = [[points[i][0], 1] for i in range(len(points))]
-   
+
     Y = [[points[i][1]] for i in range(len(points))]
 
     X_T = transpose(X)
-  
+
     A = matxMultiply(X_T, X)
-    
+
     b = matxMultiply(X_T, Y)
-   
+
 
     #m, b = (i[0] for i in gj_Solve(A, b))
     m, b = (i[0] for i in gj_Solve(A, b, decPts=4, epsilon=1.0e-16))
